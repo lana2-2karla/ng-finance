@@ -19,6 +19,7 @@
       "typeorm": "0.3.10"
    },
    "scripts": {
+      "dev": "nodemon --exec ts-node src/server.ts",
       "start": "ts-node src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs"
    }
