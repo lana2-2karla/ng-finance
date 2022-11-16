@@ -11,6 +11,7 @@ services:
             - ./pgdata:/var/lib/postgresql/data
         ports:
             - "5432:5432"
+        restart: always
     
     app:
         container_name: ng-finance
