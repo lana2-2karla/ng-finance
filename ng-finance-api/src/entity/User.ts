@@ -16,7 +16,7 @@ export class Users {
     @Column()
     account_Id: number
 
-    @OneToOne(() => Accounts)
+    @OneToOne(() => Accounts, accountId => accountId.id)
     @JoinColumn({name: "account_Id"})
     accountId: Accounts
 
