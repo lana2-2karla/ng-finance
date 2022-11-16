@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, CreateDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany, JoinColumn } from "typeorm"
+import { Accounts } from "./Account"
 
 @Entity()
 export class Transactions {
@@ -6,11 +7,13 @@ export class Transactions {
     @PrimaryGeneratedColumn("uuid")
     id: number
 
-    @Column({name: "debited_Account_Id"})
-    debitedAccountId: number
+    @OneToMany(() => Accounts, debitedAccountId => debitedAccountId.id)
+    @JoinColumn({name: "debited_Account_Id"})
+    debitedAccountId: Accounts
 
-    @Column({name: "credited_Account_Id"})
-    creditedAccountId: string
+    @OneToMany(() => Accounts, creditedAccountId => creditedAccountId.id)
+    @JoinColumn({name: "credited_Account_Id"})
+    creditedAccountId: Accounts
 
     @Column()
     value: number
