@@ -1,6 +1,8 @@
-import express = require("express");
-import { test } from "./controllers/user.controller";
-import { AppDataSource } from "./data-source";
+import 'express-async-errors'
+import express = require("express")
+import { test } from "./controllers/user.controller"
+import { AppDataSource } from "./data-source"
+import { errorMiddleware } from "./middlewares/error"
 
 
 AppDataSource.initialize().then(async () => {
@@ -9,6 +11,8 @@ AppDataSource.initialize().then(async () => {
 	app.use(express.json())
 
 	app.get('/', test)
+
+	app.use(errorMiddleware)
 
 	app.listen(process.env.PORT, () => console.log(`ouvindo na porta ${process.env.PORT}`));
 
