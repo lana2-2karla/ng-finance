@@ -7,11 +7,17 @@ export default class Transactions {
     @PrimaryGeneratedColumn("uuid")
     id: string
 
-    @ManyToOne(() => Accounts, debited => debited.acc)
-    debitedAccountId: Accounts
+    @Column()
+    debitedAccountId: string
+    @ManyToOne((_type) => Accounts, (debited: Accounts) => debited.acc)
+    @JoinColumn()
+    debitedAccount: Accounts
 
-    @ManyToOne(() => Accounts, credited => credited.acc)
-    creditedAccountId: Accounts
+    @Column()
+    creditedAccountId: string
+    @ManyToOne((_type) => Accounts, (credited: Accounts) => credited.acc)
+    @JoinColumn()
+    creditedAccount: Accounts
 
     @Column()
     value: number
