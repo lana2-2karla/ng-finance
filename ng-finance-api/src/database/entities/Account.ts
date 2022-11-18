@@ -6,12 +6,12 @@ import Users from "./User"
 export default class Accounts {
 
     @PrimaryGeneratedColumn("uuid")
-    id: number
+    id: string
 
     @Column()
     balance: number
 
-    @OneToMany(() => Users, (user) => user.accounts)
+    @OneToMany(() => Users, (user) => user.accountId)
     user: Users[]
     
     @OneToMany(()=> Transactions, (transaction) => transaction.debitedAccountId)
