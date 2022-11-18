@@ -5,7 +5,7 @@ import Accounts from "./Account"
 export default class Transactions {
 
     @PrimaryGeneratedColumn("uuid")
-    id: number
+    id: string
 
     @ManyToOne(() => Accounts, debited => debited.acc)
     debitedAccountId: Accounts
