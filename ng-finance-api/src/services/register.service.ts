@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt'
 import { IuserCreated } from "../interfaces/interface"
 import { AccountService } from "./account.service"
 
-export class Loginservice {
+export class RegisterService {
 
 	private _accountService = new AccountService();
 
