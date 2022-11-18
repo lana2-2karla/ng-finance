@@ -1,8 +1,8 @@
 import 'express-async-errors'
 import express = require("express")
-import { test } from "./controllers/user.controller"
 import { AppDataSource } from "./data-source"
 import { errorMiddleware } from "./middlewares/error"
+import routes from './routes/router'
 
 
 AppDataSource.initialize().then(async () => {
@@ -10,7 +10,7 @@ AppDataSource.initialize().then(async () => {
 
 	app.use(express.json())
 
-	app.get('/', test)
+	app.use(routes)
 
 	app.use(errorMiddleware)
 
