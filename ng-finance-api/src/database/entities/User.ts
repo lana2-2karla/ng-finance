@@ -6,7 +6,7 @@ import Accounts from "./Account"
 export default class Users {
 
     @PrimaryGeneratedColumn("uuid")
-    id: number
+    id: string
 
     @Column()
     username: string
@@ -14,8 +14,15 @@ export default class Users {
     @Column()
     password: string
 
-    @ManyToOne(type => Accounts)
-    @JoinColumn({ name: "accounts_id"})
-    accounts: Accounts
+    /* @ManyToOne(type => Accounts)
+    @JoinColumn({ name: "accounts_id"}) */
+    /* @ManyToOne(() => Accounts, (account) => account.user)
+    accountId: Accounts */
+
+    @Column()
+    accountId: string;
+    @ManyToOne((_type) => Accounts, (account: Accounts) => account.user)
+    @JoinColumn()
+    account: Accounts; 
 
 }
