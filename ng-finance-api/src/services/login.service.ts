@@ -1,32 +1,38 @@
 import { userRepository } from "../database/repositories/user.repository"
 import { ApiError } from "../helpers/api-error"
 import bcrypt from 'bcrypt'
-import { Ilogin } from "../interfaces/interface"
+import { IuserCreated } from "../interfaces/interface"
+import { AccountService } from "./account.service"
 
-export class loginservice {
+export class Loginservice {
 
-    async create(userData: Ilogin): Promise<Ilogin> {
-		const { username, password } = userData
+	private _accountService = new AccountService();
 
-		const userExists = await userRepository.findOneBy({ username })
+    async create(userData: IuserCreated): Promise<String> {
+		//const { username, password } = userData
+
+		const userExists = await userRepository.findOneBy({ username: userData.username })
 
 		if (userExists) {
 			throw new ApiError('username already exists', 400)
 		}
         // segundo parâmetro é o nível de processamento do pc p/ gerar a hash
-		const hashPassword = bcrypt.hash(password, 10)
+		const hashPassword = await bcrypt.hash(userData.password, 10)
 
-		const newUser = userRepository.create({
-			username, 
-            password: hashPassword,
-		})
+		const newAccount = await this._accountService.create();
         
+        const newUser = userRepository.create({
+			username: userData.username,
+			password: hashPassword,
+			accountId: newAccount.id
+		})
+		
         //save para de fato salvar no bd - create não salva
 		await userRepository.save(newUser)
         //desconstruindo password e renomeando p/ _
-		const { password: _, ...user } = newUser
+		//const { password: _, ...user } = newUser
 
-		return user;
+		return 'sucess'
 	}
 
 }
