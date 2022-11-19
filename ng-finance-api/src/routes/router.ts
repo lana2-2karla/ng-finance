@@ -13,5 +13,6 @@ registerValidate.validateSchema,
 
 routes.post('/login', (req, res) => loginController.authUser(req,res));
 
+routes.get('/user/:id', (req, res) => userController.getUserById(req, res));
 
 export default routes
