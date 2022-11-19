@@ -1,9 +1,11 @@
 import { userRepository } from "../database/repositories/user.repository"
 import { ApiError } from "../helpers/api-error"
 import bcrypt from 'bcrypt'
-import { IuserCreated } from "../interfaces/interface"
+import { IPayloadId, IuserCreated } from "../interfaces/interface"
 import { AccountService } from "./account.service"
 import Users from "../database/entities/User"
+import { JwtPayload } from "jsonwebtoken"
+//import { JwtPayload } from "jsonwebtoken"
 
 export class RegisterService {
 
@@ -36,9 +38,12 @@ export class RegisterService {
 		return 'sucess'
 	}
 
-	async getUserById(id: string): Promise<Users | null> {
+	async getUserById(id: string, dataId: string): Promise<Users | null> {
+
+		if (id !== dataId) throw new ApiError('invalid Token', 404);
+
 	    // descobrir forma de retirar password do retorno - confidencial
-		const user = userRepository.findOneBy({id});
+		const user = userRepository.findOneBy({ id });
 		if (!user) throw new ApiError('Not Found', 404);
 		return user;
     }
