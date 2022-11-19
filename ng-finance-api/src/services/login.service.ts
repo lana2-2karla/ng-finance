@@ -23,8 +23,10 @@ export class Login {
         if (!passDecripted) {
             throw new ApiError('Unauthorized', 401);
         }
+        
+        const { id } = userExists; 
 
-        const token = this._token.generateToken(userExists.id);
+        const token = this._token.generateToken({id});
 
         return token;
     }
