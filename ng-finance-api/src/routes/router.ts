@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import { AccountController } from '../controllers/account.controller';
 import { LoginController } from '../controllers/login.controller';
 import { UserController } from '../controllers/register.controller'
 import { authTokenMiddleware } from '../middlewares/authToken';
@@ -8,6 +9,7 @@ const routes = Router()
 const userController = new UserController();
 const loginController = new LoginController();
 const middleware = new authTokenMiddleware();
+const accountController = new AccountController();
 
 routes.post('/user', 
 registerValidate.validateSchema,
@@ -15,8 +17,11 @@ registerValidate.validateSchema,
 
 routes.post('/login', (req, res) => loginController.authUser(req,res));
 
+routes.get('/account/:id', (req, res) => accountController.getAccountById(req, res));
+
 routes.use((req, res, next) => middleware.authToken(req, res, next));
 
 routes.get('/user/:id', (req, res) => userController.getUserById(req, res));
+
 
 export default routes
