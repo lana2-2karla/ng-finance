@@ -1,4 +1,4 @@
-import { sign, SignOptions, verify } from 'jsonwebtoken';
+import { JwtPayload, sign, SignOptions, verify } from 'jsonwebtoken';
 import 'dotenv/config';
 import { ApiError } from './api-error';
 
@@ -12,7 +12,7 @@ export class Token {
         algorithm: 'HS256',
       };
 
-    public generateToken(id: string) {
+    public generateToken(id: JwtPayload) {
         return sign(id, SECRET, this._signOptions);
     }
 
