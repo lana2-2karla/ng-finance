@@ -19,6 +19,8 @@
      "strict": true,
      "noImplicitAny": true,
      "strictPropertyInitialization": false,
+     // caminho das minhas bibliotecas de tipos
+     "typeRoots": ["./src/@types"]
    },
    "include": [
      "src/**/*"
