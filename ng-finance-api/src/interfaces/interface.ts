@@ -9,4 +9,7 @@ export interface IuserCreated {
   username:string;
   password: string;
 }
-  
+
+export interface IPayloadId {
+  id: string
+}
