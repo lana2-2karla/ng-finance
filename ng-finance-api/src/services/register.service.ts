@@ -3,6 +3,7 @@ import { ApiError } from "../helpers/api-error"
 import bcrypt from 'bcrypt'
 import { IuserCreated } from "../interfaces/interface"
 import { AccountService } from "./account.service"
+import Users from "../database/entities/User"
 
 export class RegisterService {
 
@@ -34,5 +35,12 @@ export class RegisterService {
 
 		return 'sucess'
 	}
+
+	async getUserById(id: string): Promise<Users | null> {
+	    // descobrir forma de retirar password do retorno - confidencial
+		const user = userRepository.findOneBy({id});
+		if (!user) throw new ApiError('Not Found', 404);
+		return user;
+    }
 
 }
