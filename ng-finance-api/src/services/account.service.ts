@@ -1,3 +1,4 @@
+import { JwtPayload } from "jsonwebtoken";
 import Accounts from "../database/entities/Account";
 import { accountRepository } from "../database/repositories/account.repository";
 import { RegisterService } from "./register.service";
@@ -15,7 +16,9 @@ export class AccountService {
         return newAccount;
     }
 
-    async getAccountById(id: string, dataId:string) {
-        //const user = this._register.getUserById(id, dataId)
+    async getAccountById(userData: JwtPayload) {
+        const { accountId } = userData;
+        const account = accountRepository.findOneBy({ id: accountId });
+        return account;
     }
 }
