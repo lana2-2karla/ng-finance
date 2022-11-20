@@ -4,7 +4,7 @@ import { RegisterService } from "./register.service";
 
 export class AccountService {
 
-    private _register = new RegisterService;
+    //private _register = new RegisterService;
 
     async create(): Promise<Accounts> {
         const newAccount = accountRepository.create({
@@ -16,6 +16,6 @@ export class AccountService {
     }
 
     async getAccountById(id: string, dataId:string) {
-        const user = this._register.getUserById(id, dataId)
+        //const user = this._register.getUserById(id, dataId)
     }
 }
