@@ -17,7 +17,7 @@ registerValidate.validateSchema,
 
 routes.post('/login', (req, res) => loginController.authUser(req,res));
 
-routes.get('/account/:id', (req, res) => accountController.getAccountById(req, res));
+routes.get('/account/user', (req, res) => accountController.getAccountById(req, res));
 
 routes.use((req, res, next) => middleware.authToken(req, res, next));
 
