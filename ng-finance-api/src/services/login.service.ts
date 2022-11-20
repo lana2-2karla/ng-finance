@@ -10,23 +10,21 @@ export class Login {
 
     async authUser(userData: IuserCreated): Promise<string> {
 
-        const {username, password} = userData;
-
-        const userExists = await userRepository.findOneBy({ username });
+        const userExists = await userRepository.findOneBy({ username: userData.username });
 
 		if (!userExists) {
 			throw new ApiError('User does not exist', 400)
 		}
 
-        const passDecripted = await bcrypt.compare(password, userExists.password);
+        const passDecripted = await bcrypt.compare(userData.password, userExists.password);
 
         if (!passDecripted) {
             throw new ApiError('Unauthorized', 401);
         }
         
-        const { id } = userExists; 
+        const { id, username, accountId } = userExists; 
 
-        const token = this._token.generateToken({id});
+        const token = this._token.generateToken({id, username, accountId});
 
         return token;
     }
