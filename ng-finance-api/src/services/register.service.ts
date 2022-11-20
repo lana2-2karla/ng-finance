@@ -48,4 +48,13 @@ export class RegisterService {
 		return user;
     }
 
+	async getUserByname(username: string) {
+		const user = await userRepository
+            .findOneBy({username});
+
+        if (!user) throw new ApiError('User does not exist', 400);
+
+		return user;
+	}
+
 }
