@@ -14,12 +14,31 @@ export class AccountService {
         return newAccount;
     }
 
-    async getAccount(userData: JwtPayload): Promise<Accounts> {
-        const { accountId } = userData;
+    async getAccount(accountId: string): Promise<Accounts> {
         const account = await accountRepository.findOneBy({ id: accountId });
         if ( account === null ) {
             throw new ApiError('Account not exist', 400);
         }
         return account;
+    }
+
+    async updateAccount(
+        transactionType: string, 
+        value: number, 
+        accountId: string): Promise<string> {
+            if (!value) throw new ApiError('value not exist', 400);
+
+            let currentAccountValue = await this.getAccount(accountId);
+    
+            if (transactionType === 'cash-in') {
+                currentAccountValue.balance += value;
+            } else {
+                currentAccountValue.balance -= value;
+            }
+
+            const save = await accountRepository.save(currentAccountValue);
+            if (!save) throw new ApiError('transaction not performed', 400);
+
+            return 'successful transaction'
     }
 }
