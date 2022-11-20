@@ -5,9 +5,8 @@ export class AccountController {
 
      private _service = new AccountService();
 
-    async getAccountById(req: Request, res: Response): Promise<Response> {
-        const {id} = req.params;
-        const balance = await this._service.getAccountById(id, req.data);
-        return res.status(200).json(balance);
+    async getAccount(req: Request, res: Response) {
+        const account = await this._service.getAccount(req.data);
+        return res.status(200).json(account);
     }
 }
