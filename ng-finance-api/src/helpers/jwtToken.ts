@@ -13,13 +13,13 @@ export class Token {
         algorithm: 'HS256',
       };
 
-    async generateToken(id: JwtPayload) {
-        return sign(id, SECRET, this._signOptions);
+    async generateToken(payload: JwtPayload) {
+        return sign(payload, SECRET, this._signOptions);
     }
 
     async decodedToken(token: string) {
-        const { id } = verify(token, SECRET) as IPayloadId;
-        if(!id) throw new ApiError('invalid Token', 401)
-        return id;
+        const payload = verify(token, SECRET) as JwtPayload;
+        if(!payload) throw new ApiError('invalid Token', 401)
+        return payload;
     }
 }
