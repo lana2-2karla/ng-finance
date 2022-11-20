@@ -17,11 +17,10 @@ registerValidate.validateSchema,
 
 routes.post('/login', (req, res) => loginController.authUser(req,res));
 
-routes.get('/account/user', (req, res) => accountController.getAccountById(req, res));
-
 routes.use((req, res, next) => middleware.authToken(req, res, next));
 
 routes.get('/user/:id', (req, res) => userController.getUserById(req, res));
 
+routes.get('/account/user', (req, res) => accountController.getAccount(req, res));
 
 export default routes
