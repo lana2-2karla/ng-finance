@@ -11,5 +11,10 @@ export interface IuserCreated {
 }
 
 export interface IPayloadId {
-  id: string
+  id: string;
+}
+
+export interface ITransactionCreated {
+  username: string;
+  value: number;
 }
