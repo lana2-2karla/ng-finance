@@ -63,4 +63,14 @@ export class TransactionService {
         })
         return transactions;
     }
+
+    async getTransactions(userData: JwtPayload) {
+        const transactions = await transactionRepository.find({
+            where: [
+                { debitedAccountId: userData.accountId},
+                { creditedAccountId: userData.accountId}
+            ]
+          })
+        return transactions;
+    }
 }
