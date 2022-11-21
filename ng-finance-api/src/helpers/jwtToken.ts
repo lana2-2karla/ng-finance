@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { JwtPayload, sign, SignOptions, verify } from 'jsonwebtoken'
 import 'dotenv/config'
 import { ApiError } from './api-error'
