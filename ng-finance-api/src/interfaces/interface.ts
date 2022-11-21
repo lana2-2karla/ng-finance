@@ -1,20 +1,20 @@
 
 export interface Ilogin {
-  username: string;
-  password: string;
-  }
+  username: string
+  password: string
+}
 
 export interface IuserCreated {
-  id: number;
-  username:string;
-  password: string;
+  id: string
+  username: string
+  password: string
 }
 
 export interface IPayloadId {
-  id: string;
+  id: string
 }
 
 export interface ITransactionCreated {
-  username: string;
-  value: number;
+  username: string
+  value: number
 }
