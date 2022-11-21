@@ -38,9 +38,7 @@ export class RegisterService {
 		return 'sucess'
 	}
 
-	async getUserById(id: string, dataId: string): Promise<Users | null> {
-
-		if (id !== dataId) throw new ApiError('invalid Token', 404);
+	async getUser(id: string): Promise<Users | null> {
 
 	    // descobrir forma de retirar password do retorno - confidencial
 		const user = userRepository.findOneBy({ id });
