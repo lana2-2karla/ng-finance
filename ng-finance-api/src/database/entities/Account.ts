@@ -1,21 +1,20 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm"
-import Transactions from "./Transaction"
-import Users from "./User"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
+import Transactions from './Transaction'
+import Users from './User'
 
 @Entity()
 export default class Accounts {
-
-    @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
     id: string
 
-    @Column()
+  @Column()
     balance: number
 
-    @OneToMany(() => Users, (user) => user.accountId)
+  @OneToMany(() => Users, (user) => user.accountId)
     user: Users[]
-    
-    @OneToMany(()=> Transactions, (transaction) => transaction.debitedAccountId)
 
-    @OneToMany(()=> Transactions, (transaction) => transaction.creditedAccountId)
-    acc:Transactions[]
+  @OneToMany(() => Transactions, (transaction) => transaction.debitedAccountId)
+
+  @OneToMany(() => Transactions, (transaction) => transaction.creditedAccountId)
+    acc: Transactions[]
 }

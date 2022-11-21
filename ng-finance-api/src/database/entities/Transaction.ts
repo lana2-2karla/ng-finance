@@ -1,28 +1,28 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, JoinColumn, ManyToOne } from "typeorm"
-import Accounts from "./Account"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, JoinColumn, ManyToOne } from 'typeorm'
+import Accounts from './Account'
 
 @Entity()
 export default class Transactions {
-
-    @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
     id: string
 
-    @Column()
+  @Column()
     debitedAccountId: string
-    @ManyToOne((_type) => Accounts, (debited: Accounts) => debited.acc)
-    @JoinColumn()
+
+  @ManyToOne((_type) => Accounts, (debited: Accounts) => debited.acc)
+  @JoinColumn()
     debitedAccount: Accounts
 
-    @Column()
+  @Column()
     creditedAccountId: string
-    @ManyToOne((_type) => Accounts, (credited: Accounts) => credited.acc)
-    @JoinColumn()
+
+  @ManyToOne((_type) => Accounts, (credited: Accounts) => credited.acc)
+  @JoinColumn()
     creditedAccount: Accounts
 
-    @Column()
+  @Column()
     value: number
 
-    @CreateDateColumn({name: "created_At"})
+  @CreateDateColumn({ name: 'created_At' })
     createdAt: Date
-
 }
