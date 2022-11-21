@@ -49,4 +49,11 @@ export class TransactionService {
         await transactionRepository.save(transaction)
         return transaction;
     }
+
+    async getByTransactionCashIn(userData: JwtPayload) {
+        const transactions = await transactionRepository.findBy({
+            debitedAccountId: userData.accountId
+        })
+        return transactions;
+    }
 }
