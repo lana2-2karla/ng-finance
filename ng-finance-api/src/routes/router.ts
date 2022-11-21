@@ -27,4 +27,6 @@ routes.get('/account/user', (req, res) => accountController.getAccount(req, res)
 
 routes.post('/transaction/user', (req, res) => transactionController.create(req, res));
 
+routes.get('/transaction/cashin', (req, res) => transactionController.getByTransactionCashIn(req, res));
+
 export default routes
