@@ -1,4 +1,3 @@
-import { JwtPayload } from "jsonwebtoken";
 import Accounts from "../database/entities/Account";
 import { accountRepository } from "../database/repositories/account.repository";
 import { ApiError } from "../helpers/api-error";

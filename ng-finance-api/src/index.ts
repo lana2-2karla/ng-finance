@@ -17,4 +17,4 @@ AppDataSource.initialize().then(async () => {
 	app.listen(process.env.PORT, () => console.log(`ouvindo na porta ${process.env.PORT}`));
 
 
-}).catch(error => console.log(error))
+})

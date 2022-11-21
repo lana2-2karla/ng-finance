@@ -1,18 +1,15 @@
 import { userRepository } from "../database/repositories/user.repository"
 import { ApiError } from "../helpers/api-error"
 import bcrypt from 'bcrypt'
-import { IPayloadId, IuserCreated } from "../interfaces/interface"
+import { IuserCreated } from "../interfaces/interface"
 import { AccountService } from "./account.service"
 import Users from "../database/entities/User"
-import { JwtPayload } from "jsonwebtoken"
-//import { JwtPayload } from "jsonwebtoken"
 
 export class UserService {
 
 	private _accountService = new AccountService();
 
     async create(userData: IuserCreated): Promise<String> {
-		//const { username, password } = userData
 
 		const userExists = await userRepository.findOneBy({ username: userData.username })
 
@@ -32,8 +29,6 @@ export class UserService {
 		
         //save para de fato salvar no bd - create não salva
 		await userRepository.save(newUser)
-        //desconstruindo password e renomeando p/ _
-		//const { password: _, ...user } = newUser
 
 		return 'sucess'
 	}

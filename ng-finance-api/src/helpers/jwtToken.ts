@@ -1,7 +1,6 @@
 import { JwtPayload, sign, SignOptions, verify } from 'jsonwebtoken';
 import 'dotenv/config';
 import { ApiError } from './api-error';
-import { IPayloadId } from '../interfaces/interface';
 
 const SECRET = process.env.JWT_SECRET || '';
 
