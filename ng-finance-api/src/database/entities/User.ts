@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, ManyToOne } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne } from "typeorm"
 import Accounts from "./Account"
 
 
@@ -13,11 +13,6 @@ export default class Users {
 
     @Column()
     password: string
-
-    /* @ManyToOne(type => Accounts)
-    @JoinColumn({ name: "accounts_id"}) */
-    /* @ManyToOne(() => Accounts, (account) => account.user)
-    accountId: Accounts */
 
     @Column()
     accountId: string;
