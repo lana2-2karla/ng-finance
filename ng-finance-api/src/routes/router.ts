@@ -31,4 +31,6 @@ routes.get('/transaction/cashin', (req, res) => transactionController.getByTrans
 
 routes.get('/transaction/cashout', (req, res) => transactionController.getByTransactionCashOut(req, res));
 
+routes.get('/transactions/user', (req, res) => transactionController.getTransactions(req, res));
+
 export default routes
