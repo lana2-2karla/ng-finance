@@ -14,4 +14,9 @@ export class TransactionController {
         const transaction = await this._service.getByTransactionCashIn(req.data);
         return res.status(200).json(transaction);
     }
+
+    async getByTransactionCashOut(req: Request, res: Response) {
+        const transaction = await this._service.getByTransactionCashOut(req.data);
+        return res.status(200).json(transaction);
+    }
 }
