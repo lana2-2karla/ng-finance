@@ -7,7 +7,7 @@ import Users from "../database/entities/User"
 import { JwtPayload } from "jsonwebtoken"
 //import { JwtPayload } from "jsonwebtoken"
 
-export class RegisterService {
+export class UserService {
 
 	private _accountService = new AccountService();
 
@@ -43,6 +43,7 @@ export class RegisterService {
 	    // descobrir forma de retirar password do retorno - confidencial
 		const user = userRepository.findOneBy({ id });
 		if (!user) throw new ApiError('Not Found', 404);
+		
 		return user;
     }
 
