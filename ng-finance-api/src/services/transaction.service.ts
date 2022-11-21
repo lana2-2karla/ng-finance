@@ -56,4 +56,11 @@ export class TransactionService {
         })
         return transactions;
     }
+
+    async getByTransactionCashOut(userData: JwtPayload) {
+        const transactions = await transactionRepository.findBy({
+            creditedAccountId: userData.accountId
+        })
+        return transactions;
+    }
 }
