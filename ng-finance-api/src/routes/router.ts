@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { AccountController } from '../controllers/account.controller';
 import { LoginController } from '../controllers/login.controller';
-import { UserController } from '../controllers/register.controller'
+import { UserController } from '../controllers/user.controller'
 import { TransactionController } from '../controllers/transaction.controller';
 import { authTokenMiddleware } from '../middlewares/authToken';
 import registerValidate from '../middlewares/registerValidation';
