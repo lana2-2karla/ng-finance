@@ -1,9 +1,9 @@
 import { Request, Response } from "express"
-import { RegisterService } from "../services/register.service";
+import { UserService } from "../services/user.service";
 
 export class UserController {
 
-  private _service = new RegisterService()
+    private _service = new UserService()
 
     async create(req: Request, res: Response) {
         const newUser = await this._service.create(req.body)
