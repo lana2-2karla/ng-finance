@@ -1,4 +1,4 @@
-import { AppDataSource } from "../../data-source";
-import Accounts from "../entities/Account";
+import { AppDataSource } from '../../data-source'
+import Accounts from '../entities/Account'
 
-export const accountRepository = AppDataSource.getRepository(Accounts);
+export const accountRepository = AppDataSource.getRepository(Accounts)

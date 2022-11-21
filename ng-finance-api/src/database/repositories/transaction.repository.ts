@@ -1,4 +1,4 @@
-import { AppDataSource } from "../../data-source";
-import Transactions from "../entities/Transaction";
+import { AppDataSource } from '../../data-source'
+import Transactions from '../entities/Transaction'
 
-export const transactionRepository = AppDataSource.getRepository(Transactions);
+export const transactionRepository = AppDataSource.getRepository(Transactions)
