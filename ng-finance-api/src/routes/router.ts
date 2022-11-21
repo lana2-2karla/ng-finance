@@ -5,13 +5,13 @@ import { AccountController } from '../controllers/account.controller'
 import { LoginController } from '../controllers/login.controller'
 import { UserController } from '../controllers/user.controller'
 import { TransactionController } from '../controllers/transaction.controller'
-import { authTokenMiddleware } from '../middlewares/authToken'
+import { AuthTokenMiddleware } from '../middlewares/authToken'
 import registerValidate from '../middlewares/registerValidation'
 
 const routes = Router()
 const userController = new UserController()
 const loginController = new LoginController()
-const middleware = new authTokenMiddleware()
+const middleware = new AuthTokenMiddleware()
 const accountController = new AccountController()
 const transactionController = new TransactionController()
 
@@ -19,7 +19,7 @@ routes.post('/user',
   registerValidate.validateSchema,
   (req, res) => userController.create(req, res))
 
-routes.post('/login', (req, res) => loginController.authUser(req,res))
+routes.post('/login', (req, res) => loginController.authUser(req, res))
 
 routes.use((req, res, next) => middleware.authToken(req, res, next))
 

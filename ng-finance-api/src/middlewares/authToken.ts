@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express'
 import { ApiError } from '../helpers/api-error'
 import { Token } from '../helpers/jwtToken'
 
-export class authTokenMiddleware {
+export class AuthTokenMiddleware {
   private readonly _token = new Token()
 
   async authToken (req: Request, _res: Response, next: NextFunction): Promise<void> {
