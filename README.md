@@ -82,7 +82,7 @@ Você pode testar a aplicação através do <strong>docker</strong> seguindo a e
 </details>
 
 <details>
- <summary><strong>Informações sobre o banco de dados</strong></summary><br />
+ <summary><strong>Informações sobre o banco de dados:</strong></summary><br />
  
  ![Captura de tela de 2022-11-22 17-53-57](https://user-images.githubusercontent.com/93014254/203419410-5edc71fd-d956-4b55-8eca-9a874e869716.png)
  
@@ -98,7 +98,7 @@ Você pode testar a aplicação através do <strong>docker</strong> seguindo a e
 </details>
 
 <details>
- <summary><strong>Regras de negócio</strong></summary><br />
+ <summary><strong>Regras de negócio:</strong></summary><br />
    
   - Qualquer pessoa deverá poder utilizar a aplicação. Para isso, basta realizar o cadastro informando *username* e *password*.
 - Deve-se garantir que cada *username* seja único e composto por, pelo menos, 3 caracteres.
