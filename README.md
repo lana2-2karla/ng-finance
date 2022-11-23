@@ -15,6 +15,8 @@ Para uma boa estruturação do código foi configurado o <strong>ESLint</strong>
 
 Você pode testar a aplicação através do <strong>docker</strong> seguindo a explicação em "Como rodar o projeto na sua máquina".
 
+<br/>
+
 <details>
  <summary><strong>Habilidades desenvolvidas durante o desenvolvimento do projeto:</strong></summary><br />
  
@@ -60,20 +62,20 @@ Você pode testar a aplicação através do <strong>docker</strong> seguindo a e
   - Caso não tenha o git instalado em sua máquina, você pode realizar a instalação através da [documentação](https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Instalando-o-Git)
   
   - Entre na pasta do projeto clonado
+ 
+  > Instale as dependências com `npm install`
+ 
+ - Para a aplicação funcionar corretamente você precisa editar o arquivo .env.example: 
+    - alterar as variáveis de ambiente com o seu nome de usuário e senha de conexão com o banco de dados.
+    - mudar o nome do aquivo para **.env**, caso contrário a aplicação não encontrará o arquivo. 
+    
+   - Você consegue encontrar mais informações [aqui](https://www.freecodecamp.org/portuguese/news/como-usar-variaveis-de-ambiente-do-node-com-um-arquivo-dotenv-para-node-js-e-npm/)
   
   > Rode os containers com o comando `docker-compose up -d`
   
   - Esse serviço irá inicializar dois containers chamados postgres(port: 5432) e ng-finance(port: 3000)
   
-  > Use o comando `docker exec -it ng-finance bash`
-  
-  - Ele te dará acesso ao terminal interativo do container criado pelo compose, que está rodando em segundo plano.
-  
-  > Instale as dependências com `npm install`
-  
-  - Não é necessário editar o aquivo .env.example, o docker-compose já está com as variáveis de ambiente.
-  
-  > Para iniciar a aplicação: `npm start`
+ - :sparkles:E pronto!! O projeto está rodando na sua máquina:sparkles:
   
 :eyes: **De olho nas dicas:** 
  
@@ -91,7 +93,7 @@ Você pode testar a aplicação através do <strong>docker</strong> seguindo a e
    - A tabela <strong>users</strong> possui informações sobre os usuários;
    - A tabela <strong>transactions</strong> possui informações das transações feita por cada usuário;
    - A tabela <strong>accounts</strong> possui informações da conta de cada usuário:
-     Essa tabela possui um relacionamento N:1 com a tabela transactions, sendo assim, uma conta pode possuir várias transações, mas uma transação só pode ser feita por uma conta.
+     Essa tabela possui um relacionamento N:1 com a tabela transactions e 1:1 com a tabela users. Sendo assim, uma conta pode possuir várias transações, mas uma transação só pode ser feita por uma conta e uma conta só pode pertencer a um usuário assim como um usuário só pode ter uma conta.
    
 </details>
 
