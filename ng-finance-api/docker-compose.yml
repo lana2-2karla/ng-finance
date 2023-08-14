@@ -1,32 +1,25 @@
 version: '3'
 services: 
-        
     db:
-        container_name: postgres
-        image: 'postgres:latest'
+        image: postgres
         environment:
-            POSTGRES_PASSWORD: "postgres"
-        volumes:
-            - ./pgdata:/data/postgres
+            POSTGRES_PASSWORD: 12345678
         ports:
             - "5432:5432"
-        restart: always
+        container_name: db
 
     app:
-        container_name: ng-finance
-        restart: always
-        build: .
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            DB_HOST: 'db'
+            DB_PORT: 5432
+            DB_USER: 'postgres'
+            DB_PASS: 12345678
+            DB_NAME: 'postgres'
         ports:
             - "3000:3000"
-        environment:
-            DB_HOST: db
-            DB_PORT: 5432
-            DB_USER: postgres
-            DB_PASSWORD: postgres
-            DB_NAME: postgres
+        container_name: ng-finance
         depends_on:
-            - db
-        volumes:
-            - './:/usr/src'
-        links:
             - db
