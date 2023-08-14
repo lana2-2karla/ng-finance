@@ -38,6 +38,6 @@
       "migration:generate": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:generate ./src/database/migrations/default",
       "migration:run": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:run",
       "typeorm": "typeorm-ts-node-commonjs",
-      "vercel-build": "npm typeorm migration:run deploy"
+      "vercel-build": "npx typeorm migration:run deploy"
    }
 }
